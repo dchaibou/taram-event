@@ -1,0 +1,11 @@
+@import java.util.Map
+@param Map<String, String> alerts
+
+@template.layout.base(
+    title = "", 
+    alerts = alerts,
+     content = @`
+
+
+
+`)
