@@ -1,13 +1,15 @@
 @import java.util.Map
 @import com.taramtech.taram_event.dto.CustomUserDetails
 @import java.time.format.DateTimeFormatter
+
 @param Map<String, String> alerts
 @param CustomUserDetails user
 
 @template.layout.base(
     title = "Mon compte",
-    alerts = alerts,
     currentPage = "eventDetails",
+    alerts = alerts,
+    user = user,
     content = @`
     <div class="p-5 bg-light rounded-3 shadow">
         <h1 class="display-4">Détails de mon compte</h1>

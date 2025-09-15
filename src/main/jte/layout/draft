@@ -1,11 +1,15 @@
 @import java.util.Map
+@import com.taramtech.taram_event.dto.CustomUserDetails
+@import java.time.format.DateTimeFormatter
+
 @param Map<String, String> alerts
+@param CustomUserDetails user
 
 @template.layout.base(
-    title = "", 
+    title = "pageTitle",
+    currentPage = "indexDuNav",
     alerts = alerts,
-     content = @`
-
-
+    user = user,
+    content = @`
 
 `)

@@ -1,18 +1,20 @@
 @import com.taramtech.taram_event.config.Constants
 @import java.util.Map
 @import gg.jte.Content
+@import com.taramtech.taram_event.dto.CustomUserDetails;
 
 @param String title
 @param Content content
 @param Map<String, String> alerts
 @param String currentPage
+@param CustomUserDetails user
 
 <!DOCTYPE html>
 <html lang="fr" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} | ${Constants.APP_NAME}</title>
+    <title>${Constants.APP_NAME} | ${title} </title>
     <link href="/assets/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/bootstrap-icons/1.11.0/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -179,10 +181,13 @@
           <i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <div class="collapse ${currentPage.startsWith("events") ? "show" : ""}" id="events-collapse">
-          <ul class="nav flex-column ps-4">
+          <ul class="nav flex-column ps-2">
+
+            @if(null != user && (user.getRoleCode().contains("admin") || user.getRoleCode().contains("organizer")))
             <li class="nav-item">
               <a href="/events/create" class="nav-link text-dark ${currentPage.equals("eventForm") ? "active" : ""}">Créer un évènement</a>
             </li>
+            @endif
             <li class="nav-item">
               <a href="/events/eventPeriod/today" class="nav-link text-dark ${currentPage.equals("eventsToday") ? "active" : ""}">Évènements du jour</a>
             </li>
@@ -198,7 +203,7 @@
           </ul>
         </div>
       </li>
-
+      @if(null != user && user.getRoleCode().contains("admin"))
       <li class="nav-item">
         <a href="#" class="nav-link text-dark d-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="${currentPage.startsWith("users") ? "true" : "false"}" aria-controls="users-collapse">
           <i class="bi bi-people me-2"></i>
@@ -206,7 +211,7 @@
           <i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <div class="collapse ${currentPage.startsWith("users") ? "show" : ""}" id="users-collapse">
-          <ul class="nav flex-column ps-4">
+          <ul class="nav flex-column ps-2">
             <li class="nav-item">
               <a href="/users" class="nav-link text-dark ${currentPage.equals("usersAll") ? "active" : ""}">Tous les utilisateurs</a>
             </li>
@@ -216,6 +221,7 @@
           </ul>
         </div>
       </li>
+      @endif
     </ul>
   </aside>
 

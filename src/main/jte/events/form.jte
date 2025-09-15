@@ -2,15 +2,18 @@
 @import java.util.Map
 @import com.taramtech.taram_event.dto.EventDTO
 @import com.taramtech.domain.tables.pojos.EventType
+@import com.taramtech.taram_event.dto.CustomUserDetails
 
 @param Map<String, String> alerts
 @param EventDTO event
 @param List<EventType> eventTypes
+@param CustomUserDetails user
 
 @template.layout.base(
     title = event.getId() != null ? "Modifier un événement" : "Créer un événement",
     currentPage = "eventForm",
     alerts = alerts,
+    user = user,
     content = @`
     <div class="row">
         <div class="col-12">

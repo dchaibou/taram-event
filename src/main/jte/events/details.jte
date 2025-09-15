@@ -1,14 +1,17 @@
 @import java.util.Map
 @import com.taramtech.taram_event.dto.EventDTO
 @import com.taramtech.taram_event.dto.TicketTypeDTO
+@import com.taramtech.taram_event.dto.CustomUserDetails
 
 @param Map<String, String> alerts
 @param EventDTO event
+@param CustomUserDetails user
 
 @template.layout.base(
     title = event.getTitle(),
-    alerts = alerts,
     currentPage = "eventDetails",
+    alerts = alerts,
+    user = user,
     content = @`
     <div class="row">
         <div class="col-12">
@@ -32,7 +35,7 @@
                     <hr>
                     <p class="card-text">
                         <strong><i class="bi bi-geo-alt me-2"></i>Catégorie :</strong> 
-                        <%-- ${event.getCategorieName()} --%>
+                        <%-- ${event.getCategorieName()} --%> CategorieName
                     </p>
                     <p class="card-text">
                         <strong><i class="bi bi-geo-alt me-2"></i>Lieu :</strong> ${event.getLocation()}

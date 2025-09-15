@@ -1,15 +1,18 @@
 @import java.util.Map
 @import java.util.List
 @import com.taramtech.taram_event.dto.EventDTO
+@import com.taramtech.taram_event.dto.CustomUserDetails
 
 @param Map<String, String> alerts
-@param List<EventDTO> events
 @param String currentPage
+@param List<EventDTO> events
+@param CustomUserDetails user
 
 @template.layout.base(
     title = "Accueil", 
-    alerts = alerts,
     currentPage = currentPage,
+    alerts = alerts,
+    user = user,
     content = @`
     <div class="row text-center mb-5">
         <div class="col-12">
